@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, StatusBar, ScrollView} from 'react-native'
+import {Text, View, StatusBar, ScrollView} from 'react-native'
 import FixedHeader from './elements/FixedHeader'
 import TextHeadings from './elements/TextHeadings'
 import Exam from './elements/Exam'
