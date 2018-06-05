@@ -16,8 +16,12 @@ class WidgetList extends Component {
 		const {navigation} = this.props;
 		const lessonId = navigation.getParam("lessonId")
 		fetch("http://localhost:8080/api/lesson/"+lessonId+"/widget")
-			.then(response => (response.json()))
-			.then(widgets => this.setState({widgets}))
+			.then(response => {
+				return response.json()
+			})
+			.then(widgets => {
+				this.setState({widgets})
+			})
 	}
 	render() {
 		return(

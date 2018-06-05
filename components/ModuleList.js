@@ -18,7 +18,11 @@ class ModuleList extends Component {
 		})
 		fetch('http://localhost:8080/api/course/' + courseId + '/module')
 			.then(response => (response.json()))
-			.then(modules => this.setState({modules: modules}))
+			.then(
+				modules =>
+				{
+					this.setState({modules: modules})
+				})
 	}
 	render() {
 		return(
