@@ -10,7 +10,6 @@ export default class EssayQuestionEditor extends React.Component {
 			title: '',
 			description: '',
 			points: 20,
-			options: ''
 		}
 
 	}
@@ -20,11 +19,13 @@ export default class EssayQuestionEditor extends React.Component {
 		const title = this.props.navigation.getParam("title")
 		const description = this.props.navigation.getParam("description")
 		const points = this.props.navigation.getParam("points")
-		const questionId = this.props.navigation.getParam("questionId")
+		// const questionId = this.props.navigation.getParam("questionId")
 
-		fetch("http://localhost:8080/api/essay/" + questionId)
-			.then(response => (response.json()))
-			.then(questions => this.setState({questions}))
+		// fetch("http://localhost:8080/api/essay/" + questionId)
+		// 	.then(response => (response.json()))
+		// 	.then(questions => {
+		// 		this.setState({questions})
+		// 	})
 
 
 		this.setState({
@@ -32,6 +33,7 @@ export default class EssayQuestionEditor extends React.Component {
 			title: title,
 			description: description,
 			points: points
+			// questionId: questionId
 		})
 	}
 
@@ -43,11 +45,12 @@ export default class EssayQuestionEditor extends React.Component {
 		return (
 			<ScrollView>
 				<View style={{padding: 20}}>
-					<Text h3>EQT: {this.state.title}</Text>
+					<Text h3>{this.state.title}</Text>
 					<Text h4>{this.state.points}pts</Text>
 
-					<Text>If this was an essay question, what would you want the essay to be about?</Text>
-					<TextInput placeholder="Write your essay here" multiline={true}/>
+					<Text style={{padding: 10}}>{this.state.description}</Text>
+					<TextInput placeholder="Write your essay here" multiline={true}
+					           style={{padding: 10, height: 100, backgroundColor: 'white'}}/>
 
 					<View style={{paddingTop: 10}}>
 						<Button title="Cancel" backgroundColor="red"/>

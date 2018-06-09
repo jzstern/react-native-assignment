@@ -11,13 +11,17 @@ class QuestionList extends Component {
 			examId: 1
 		}
 	}
+
 	componentDidMount() {
 		const {navigation} = this.props;
 		const examId = navigation.getParam("examId")
-		fetch("http://localhost:8080/api/exam/"+examId+"/question")
+
+		fetch("http://localhost:8080/api/exam/" + examId + "/question")
 			.then(response => (response.json()))
 			.then(questions => this.setState({questions}))
 	}
+
+
 	render() {
 		return(
 			<View style={{padding: 15}}>
@@ -33,7 +37,14 @@ class QuestionList extends Component {
 										.navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
 								if(question.type === "Essay")
 									this.props.navigation
-										.navigate("EssayQuestionEditor", {questionId: question.id})
+										.navigate("EssayQuestionEditor", {
+											questionId: question.id,
+											examId: this.state.examId,
+											essayId: question.id,
+											title: question.title,
+											description: question.description,
+											points: question.points
+										})
 							}}
 							key={index}
 							subtitle={question.description}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Alert} from 'react-native'
+import {View, Alert, ScrollView, Button} from 'react-native'
 import {Text, ListItem} from 'react-native-elements'
 
 class WidgetList extends Component {
@@ -9,31 +9,53 @@ class WidgetList extends Component {
 		this.state = {
 			widgets: [],
 			courseId: 1,
-			moduleId: 1
+			moduleId: 1,
+			lessonId: 1
 		}
 	}
+
 	componentDidMount() {
 		const {navigation} = this.props;
 		const lessonId = navigation.getParam("lessonId")
-		fetch("http://localhost:8080/api/lesson/" + lessonId + "/widget")
-			.then(response => {
-				return response.json()
-			})
-			.then(widgets => {
-				this.setState({widgets})
-			})
+
+		this.setState({lessonId: lessonId}, () => {
+			fetch("http://localhost:8080/api/lesson/" + lessonId + "/widget")
+				.then(response => {
+					return response.json()
+				})
+				.then(widgets => {
+					this.setState({widgets})
+				})
+		})
 	}
+
 	render() {
 		return(
-			<View style={{padding: 15}}>
+			<ScrollView style={{padding: 15}}>
 				{this.state.widgets.map((widget, index) => (
 						<ListItem
 							onPress={() => this.props.navigation
-								.navigate("QuestionList", {examId: widget.id})}
+								.navigate("QuestionList", {
+									examId: widget.id,
+									name: widget.name,
+									points: widget.points,
+									description: widget.description,
+									lessonId: this.state.lessonId})}
 							key={index}
 							subtitle={widget.description}
 							title={widget.title}/>))}
-			</View>
+
+				<Button title="Create Assignment"
+				        onPress={() => this.props.navigation
+					        .navigate('AssignmentWidget', {
+						        lessonId: state.lessonId
+					        })}/>
+				<Button title="Create Exam"
+				        onPress={() => this.props.navigation
+					        .navigate('Exam', {
+						        lessonId: this.state.lessonId
+					        })}/>
+			</ScrollView>
 		)
 	}
 }
