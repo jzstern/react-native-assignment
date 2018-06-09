@@ -51,7 +51,6 @@ class MultipleChoiceQuestionEditor extends React.Component {
 				<Text h3>Preview</Text>
 				<Text h2>{this.state.title}</Text>
 				<Text>{this.state.description}</Text>
-
 			</View>
 		)
 	}

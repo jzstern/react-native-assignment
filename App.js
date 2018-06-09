@@ -5,7 +5,7 @@ import TextHeadings from './elements/TextHeadings'
 import Exam from './elements/Exam'
 import QuestionTypeButtonGroupChooser from "./elements/QuestionTypeButtonGroupChooser"
 import QuestionTypePicker from "./elements/QuestionTypePicker"
-import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor'
+import TrueFalseQuestionEditor from './elements/editors/TrueFalseQuestionEditor'
 import createStackNavigator from "react-navigation/src/navigators/createStackNavigator"
 import {Button} from "react-native-elements"
 import ScreenX from './elements/ScreenX'
@@ -15,7 +15,8 @@ import ModuleList from "./components/ModuleList";
 import LessonList from "./components/LessonList";
 import WidgetList from "./components/WidgetList";
 import QuestionList from "./components/QuestionList";
-import MultipleChoiceQuestionEditor from "./elements/MultipleChoiceQuestionEditor";
+import MultipleChoiceQuestionEditor from "./elements/editors/MultipleChoiceQuestionEditor";
+import EssayQuestionEditor from "./elements/editors/EssayQuestionEditor";
 
 
 class Home extends React.Component {
@@ -34,28 +35,20 @@ class Home extends React.Component {
         <Button title="Courses"
                 onPress={() => this.props.navigation
 					        .navigate('CourseList') } />
-        <Button title="Go to Screen X"
-                onPress={() => this.props.navigation
-					        .navigate('ScreenX') } />
-        <Button title="Go to Screen A"
-                onPress={() => this.props.navigation
-					        .navigate('ScreenA') } />
-        <Button title="Go to Screen B"
-                onPress={() => this.props.navigation
-					        .navigate('ScreenB') } />
+        {/*<Button title="Go to Screen X"*/}
+                {/*onPress={() => this.props.navigation*/}
+					        {/*.navigate('ScreenX') } />*/}
+        {/*<Button title="Go to Screen A"*/}
+                {/*onPress={() => this.props.navigation*/}
+					        {/*.navigate('ScreenA') } />*/}
+        {/*<Button title="Go to Screen B"*/}
+                {/*onPress={() => this.props.navigation*/}
+					        {/*.navigate('ScreenB') } />*/}
 
-
-        <TrueFalseQuestionEditor/>
-
-        <QuestionTypeButtonGroupChooser/>
-        <QuestionTypePicker/>
-
-        <Exam/>
-
-        <Icons/>
-        <View style={{padding: 20}}>
-          <TextHeadings/>
-        </View>
+        {/*<TrueFalseQuestionEditor/>*/}
+        {/*<QuestionTypeButtonGroupChooser/>*/}
+        {/*<QuestionTypePicker/>*/}
+        {/*<Exam/>*/}
       </ScrollView>
 		)
 	}
@@ -94,6 +87,7 @@ const App = createStackNavigator({
 	QuestionList,
 	TrueFalseQuestionEditor,
 	MultipleChoiceQuestionEditor,
+	EssayQuestionEditor,
 	ScreenA,
 	ScreenB,
 	ScreenX

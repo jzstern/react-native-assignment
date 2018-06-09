@@ -14,6 +14,12 @@ const questions = [
 
 
 export default class Exam extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+
+		}
+	}
 	render() {
 		return (
 			<View style={{padding: 15}}>
