@@ -11,7 +11,6 @@ class MultipleChoiceQuestionEditor extends React.Component {
 			title: '',
 			description: '',
 			points: 0,
-			options: ''
 		}
 	}
 	updateForm(newState) {

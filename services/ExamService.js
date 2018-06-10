@@ -52,4 +52,4 @@ class ExamService {
 	}
 }
 
-export default ExamService;
+export default ExamService

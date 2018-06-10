@@ -14,11 +14,16 @@ class QuestionService {
 		return this[_singleton]
 	}
 
-	createEssayQuestion(essay, examId) {
+	createEssayQuestion(essayQuestion, examId) {
 		let url = localURL + "/api/exam/" + examId + "/essay"
 
+		console.log('examId: ' + examId)
+		console.log(url)
+
+		console.log(essayQuestion)
+
 		return fetch(url, {
-			body: JSON.stringify(essay),
+			body: JSON.stringify(essayQuestion),
 			headers: {
 				'content-type': 'application/json'
 			},
@@ -26,8 +31,24 @@ class QuestionService {
 		})
 	}
 
+	updateEssayQuestion(essayQuestion, essayId) {
+		let url = localURL + "/api/essay/" + essayId
+
+		console.log('called updateEssayQuestion from QuestionService!')
+		console.log(essayQuestion)
+
+		return fetch(url, {
+			body: JSON.stringify(essayQuestion),
+			headers: {
+				'content-type' : 'application/json'
+			},
+			method: 'PUT'
+		})
+	}
+
 	deleteEssayQuestion(essayId) {
-		let url = localURL + "/api/essay/" + essayId;
+		let url = localURL + "/api/essay/" + essayId
+
 		return fetch(url, {
 			method: 'DELETE'
 		})

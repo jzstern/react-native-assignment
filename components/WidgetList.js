@@ -10,7 +10,8 @@ class WidgetList extends Component {
 			widgets: [],
 			courseId: 1,
 			moduleId: 1,
-			lessonId: 1
+			lessonId: 1,
+			points: 0
 		}
 	}
 
@@ -25,8 +26,11 @@ class WidgetList extends Component {
 				})
 				.then(widgets => {
 					this.setState({widgets})
+					console.log(widgets)
 				})
 		})
+
+		console.log('widgets: ' + this.state.widgets)
 	}
 
 	render() {
@@ -38,7 +42,6 @@ class WidgetList extends Component {
 								.navigate("QuestionList", {
 									examId: widget.id,
 									name: widget.name,
-									points: widget.points,
 									description: widget.description,
 									lessonId: this.state.lessonId})}
 							key={index}
