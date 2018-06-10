@@ -1,9 +1,7 @@
 import React from 'react'
 import {View, ScrollView, TextInput} from 'react-native'
-import {Button, Text} from 'react-native-elements'
+import {Button, Text, FormLabel, FormInput} from 'react-native-elements'
 import QuestionService from '../../services/QuestionService'
-import FormLabel from "react-native-elements/src/form/FormLabel";
-import FormInput from "react-native-elements/src/form/FormInput";
 
 export default class EssayQuestionEditor extends React.Component {
 	static navigationOptions = {title: 'Essay Question '}
@@ -84,13 +82,12 @@ export default class EssayQuestionEditor extends React.Component {
 
 					<FormLabel>Description</FormLabel>
 					<TextInput onChangeText={description => this.updateForm({description: description})}
-					           placeholder="Enter a description here"
+					           placeholder="Enter a description"
 					           value={this.state.description}
 					           style={{padding: 20, backgroundColor: "white"}}/>
 
 					<FormLabel>Points</FormLabel>
 					<FormInput onChangeText={points => this.updateForm({points: points})} value={this.state.points.toString()}/>
-
 
 					<Text h4 style={{paddingTop: 20}}>Preview</Text>
 					<Text h3>{this.state.title}</Text>
@@ -101,7 +98,7 @@ export default class EssayQuestionEditor extends React.Component {
 					           style={{padding: 10, height: 100, backgroundColor: 'white'}}/>
 
 					<View style={{paddingTop: 10}}>
-						<Button title="Cancel" onPress={() => this.delete()} backgroundColor="red" style={{paddingTop: 10}}/>
+						<Button title="Delete" onPress={() => this.delete()} backgroundColor="red" style={{paddingTop: 10}}/>
 						<Button title="Update" onPress={() => this.update()} backgroundColor="blue" style={{paddingTop: 10}}/>
 						<Button title="Submit" onPress={() => this.create()} backgroundColor="green" style={{paddingTop: 10}}/>
 					</View>

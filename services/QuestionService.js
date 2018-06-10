@@ -14,13 +14,48 @@ class QuestionService {
 		return this[_singleton]
 	}
 
+	createTrueFalseQuestion(tfQuestion, tfId) {
+		let url = localURL + "/api/exam/" + tfId + "/truefalse"
+
+		return fetch(url, {
+			body: JSON.stringify(tfQuestion),
+			headers: {
+				'content-type': 'application/json'
+			},
+			method: 'POST'
+		})
+	}
+
+	deleteTrueFalseQuestion(tfId) {
+		let url = localURL + "/api/truefalse/" + tfId
+
+		return fetch(url, {
+			method: 'DELETE'
+		})
+	}
+
+	createMultipleChoiceQuestion(mcQuestion, examId) {
+		let url = localURL + "/api/exam/" + examId + "/choice"
+
+		return fetch(url, {
+			body: JSON.stringify(mcQuestion),
+			headers: {
+				'content-type': 'application/json'
+			},
+			method: 'POST'
+		})
+	}
+
+	deleteMultipleChoiceQuestion(mcId) {
+		let url = localURL + "/api/choice/" + mcId
+
+		return fetch(url, {
+			method: 'DELETE'
+		})
+	}
+
 	createEssayQuestion(essayQuestion, examId) {
 		let url = localURL + "/api/exam/" + examId + "/essay"
-
-		console.log('examId: ' + examId)
-		console.log(url)
-
-		console.log(essayQuestion)
 
 		return fetch(url, {
 			body: JSON.stringify(essayQuestion),
@@ -33,9 +68,6 @@ class QuestionService {
 
 	updateEssayQuestion(essayQuestion, essayId) {
 		let url = localURL + "/api/essay/" + essayId
-
-		console.log('called updateEssayQuestion from QuestionService!')
-		console.log(essayQuestion)
 
 		return fetch(url, {
 			body: JSON.stringify(essayQuestion),

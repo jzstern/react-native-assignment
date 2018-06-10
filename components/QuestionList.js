@@ -66,7 +66,14 @@ class QuestionList extends Component {
 							onPress={() => {
 								if(question.type === "TrueFalse")
 									this.props.navigation
-										.navigate("TrueFalseQuestionEditor", {questionId: question.id})
+										.navigate("TrueFalseQuestionEditor", {
+											questionId: question.id,
+											examId: this.state.examId,
+											tfId: question.id,
+											title: question.title,
+											description: question.description,
+											points: question.points
+										})
 								if(question.type === "MultipleChoice")
 									this.props.navigation
 										.navigate("MultipleChoiceQuestionEditor", {
