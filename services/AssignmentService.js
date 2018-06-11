@@ -17,7 +17,7 @@ class AssignmentService {
 	}
 
 	createAssignment(assignment, lessonId) {
-		let url = prodURL + "/api/lesson/" + lessonId + "/assignment"
+		let url = localURL + "/api/lesson/" + lessonId + "/assignment"
 
 		return fetch(url, {
 			body: JSON.stringify(assignment),
@@ -31,7 +31,7 @@ class AssignmentService {
 	}
 
 	deleteAssignment(assignmentId) {
-		let url = prodURL + "/api/assignment/" + assignmentId
+		let url = localURL + "/api/assignment/" + assignmentId
 		return fetch(url, {
 			method: 'DELETE'
 		})

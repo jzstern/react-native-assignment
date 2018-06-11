@@ -16,7 +16,7 @@ class QuestionService {
 	}
 
 	createFillInTheBlankQuestion(fillQuestion, fillId) {
-		let url = prodURL + "/api/exam/" + fillId + "/fill"
+		let url = localURL + "/api/exam/" + fillId + "/fill"
 
 		return fetch(url, {
 			body: JSON.stringify(fillQuestion),
@@ -28,7 +28,7 @@ class QuestionService {
 	}
 
 	deleteFillInTheBlankQuestion(fillId) {
-		let url = prodURL + "/api/fill/" + fillId
+		let url = localURL + "/api/fill/" + fillId
 
 		return fetch(url, {
 			method: 'DELETE'
@@ -36,7 +36,7 @@ class QuestionService {
 	}
 
 	createTrueFalseQuestion(tfQuestion, tfId) {
-		let url = prodURL + "/api/exam/" + tfId + "/truefalse"
+		let url = localURL + "/api/exam/" + tfId + "/truefalse"
 
 		return fetch(url, {
 			body: JSON.stringify(tfQuestion),
@@ -48,7 +48,7 @@ class QuestionService {
 	}
 
 	deleteTrueFalseQuestion(tfId) {
-		let url = prodURL + "/api/truefalse/" + tfId
+		let url = localURL + "/api/truefalse/" + tfId
 
 		return fetch(url, {
 			method: 'DELETE'
@@ -56,7 +56,7 @@ class QuestionService {
 	}
 
 	createMultipleChoiceQuestion(mcQuestion, examId) {
-		let url = prodURL + "/api/exam/" + examId + "/choice"
+		let url = localURL + "/api/exam/" + examId + "/choice"
 
 		return fetch(url, {
 			body: JSON.stringify(mcQuestion),
@@ -68,7 +68,7 @@ class QuestionService {
 	}
 
 	deleteMultipleChoiceQuestion(mcId) {
-		let url = prodURL + "/api/choice/" + mcId
+		let url = localURL + "/api/choice/" + mcId
 
 		return fetch(url, {
 			method: 'DELETE'
@@ -76,7 +76,7 @@ class QuestionService {
 	}
 
 	createEssayQuestion(essayQuestion, examId) {
-		let url = prodURL + "/api/exam/" + examId + "/essay"
+		let url = localURL + "/api/exam/" + examId + "/essay"
 
 		return fetch(url, {
 			body: JSON.stringify(essayQuestion),
@@ -88,7 +88,7 @@ class QuestionService {
 	}
 
 	updateEssayQuestion(essayQuestion, essayId) {
-		let url = prodURL + "/api/essay/" + essayId
+		let url = localURL + "/api/essay/" + essayId
 
 		return fetch(url, {
 			body: JSON.stringify(essayQuestion),
@@ -100,7 +100,7 @@ class QuestionService {
 	}
 
 	deleteEssayQuestion(essayId) {
-		let url = prodURL + "/api/essay/" + essayId
+		let url = localURL + "/api/essay/" + essayId
 
 		return fetch(url, {
 			method: 'DELETE'

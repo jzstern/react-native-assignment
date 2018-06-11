@@ -16,7 +16,7 @@ class ExamService {
 	}
 
 	createExam(exam, lessonId) {
-		let url = prodURL + "/api/lesson/" + lessonId + "/exam"
+		let url = localURL + "/api/lesson/" + lessonId + "/exam"
 
 		console.log('exam to be created: ' + exam)
 
@@ -32,7 +32,7 @@ class ExamService {
 	}
 
 	updateExam(exam, examId) {
-		let url = prodURL + "/api/exam/" + examId
+		let url = localURL + "/api/exam/" + examId
 		return fetch(url, {
 			body: JSON.stringify(exam),
 			headers: {
@@ -43,14 +43,14 @@ class ExamService {
 	}
 
 	deleteExam(examId) {
-		let url = prodURL + "/api/exam/" + examId
+		let url = localURL + "/api/exam/" + examId
 		return fetch(url, {
 			method: 'DELETE'
 		})
 	}
 
 	findAllQuestionsForExam(examId) {
-		return fetch(prodURL + '/api/exam/' + examId + '/question')
+		return fetch(localURL + '/api/exam/' + examId + '/question')
 			.then(response => (response.json()))
 	}
 }
