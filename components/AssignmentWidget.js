@@ -1,14 +1,19 @@
 import React from 'react'
 import {View, TextInput, Alert, ScrollView} from 'react-native'
 import {FormLabel, FormInput, Text, Button} from 'react-native-elements'
+import AssignmentService from "../services/AssignmentService";
 
 class AssignmentWidget extends React.Component {
 	static navigationOptions = {title: 'Assignment'}
 	constructor(props) {
 		super(props)
 		this.state = {
-
+			lessonId: '',
+			name: '',
+			description: '',
+			points: 0
 		}
+		this.assignmentService = AssignmentService.instance
 	}
 
 	render() {

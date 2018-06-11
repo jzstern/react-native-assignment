@@ -14,6 +14,26 @@ class QuestionService {
 		return this[_singleton]
 	}
 
+	createFillInTheBlankQuestion(fillQuestion, fillId) {
+		let url = localURL + "/api/exam/" + fillId + "/fill"
+
+		return fetch(url, {
+			body: JSON.stringify(fillQuestion),
+			headers: {
+				'content-type': 'application/json'
+			},
+			method: 'POST'
+		})
+	}
+
+	deleteFillInTheBlankQuestion(fillId) {
+		let url = localURL + "/api/fill/" + fillId
+
+		return fetch(url, {
+			method: 'DELETE'
+		})
+	}
+
 	createTrueFalseQuestion(tfQuestion, tfId) {
 		let url = localURL + "/api/exam/" + tfId + "/truefalse"
 

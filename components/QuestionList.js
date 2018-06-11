@@ -55,6 +55,9 @@ class QuestionList extends Component {
 		else if (this.state.questionType === "ES") {
 			this.props.navigation.navigate('EssayQuestionEditor', {examId: examId, points: 0})
 		}
+		else if (this.state.questionType === "FB") {
+			this.props.navigation.navigate('FillInTheBlankQuestionEditor', {examId: examId})
+		}
 	}
 
 	render() {
@@ -64,7 +67,9 @@ class QuestionList extends Component {
 					(question, index) => (
 						<ListItem
 							onPress={() => {
-								if(question.type === "TrueFalse")
+								console.log('points from QuestionList: ' + question.points)
+
+								if (question.type === "TrueFalse")
 									this.props.navigation
 										.navigate("TrueFalseQuestionEditor", {
 											questionId: question.id,
@@ -74,7 +79,7 @@ class QuestionList extends Component {
 											description: question.description,
 											points: question.points
 										})
-								if(question.type === "MultipleChoice")
+								if (question.type === "MultipleChoice")
 									this.props.navigation
 										.navigate("MultipleChoiceQuestionEditor", {
 											questionId: question.id,
@@ -84,7 +89,7 @@ class QuestionList extends Component {
 											description: question.description,
 											points: question.points
 										})
-								if(question.type === "Essay")
+								if (question.type === "Essay")
 									this.props.navigation
 										.navigate("EssayQuestionEditor", {
 											questionId: question.id,
@@ -93,6 +98,17 @@ class QuestionList extends Component {
 											title: question.title,
 											description: question.description,
 											points: question.points
+										})
+								if (question.type === "FillInTheBlank")
+									this.props.navigation
+										.navigate("FillInTheBlankQuestionEditor", {
+											questionId: question.id,
+											examId: this.state.examId,
+											fillId: question.id,
+											title: question.title,
+											description: question.description,
+											points: question.points,
+											answers: question.answers
 										})
 							}}
 							key={index}

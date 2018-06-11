@@ -62,16 +62,24 @@ class TrueFalseQuestionEditor extends React.Component {
 		return(
 			<View>
 				<FormLabel>Title</FormLabel>
-				<FormInput onChangeText={title => this.updateForm({title: title})}/>
+				<FormInput onChangeText={title => this.updateForm({title: title})}
+				           placeholder="Enter a question title"
+				           value={this.state.title}/>
 				{/*<FormValidationMessage>*/}
 					{/*Title is required*/}
 				{/*</FormValidationMessage>*/}
 
 				<FormLabel>Description</FormLabel>
-				<FormInput onChangeText={description => this.updateForm({description: description})}/>
+				<FormInput onChangeText={description => this.updateForm({description: description})}
+				           placeholder="Enter a description"
+				           value={this.state.description}
+				           style={{padding: 20, backgroundColor: "white"}}/>
 				{/*<FormValidationMessage>*/}
 					{/*Description is required*/}
 				{/*</FormValidationMessage>*/}
+
+				<FormLabel>Points</FormLabel>
+				{/*<FormInput onChangeText={points => this.updateForm({points: points})} value={this.state.points.toString()}/>*/}
 
 				<CheckBox onPress={() => this.updateForm({isTrue: !this.state.isTrue})}
 				          checked={this.state.isTrue} title='Check if the answer is true'/>
