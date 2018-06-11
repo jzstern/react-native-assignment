@@ -36,15 +36,16 @@ class WidgetList extends Component {
 				{this.state.widgets.map((widget, index) => (
 					<ListItem
 						onPress={() => {
-							if (widget.type === 'Assignment') {
+							console.log(widget)
+							if (widget.widgetType === 'Assignment') {
 								this.props.navigation
-									.navigate('AssignmentEditor',
+									.navigate('AssignmentWidget',
 										{
 											assignmentId: widget.id,
-											name: widget.name,
+											title: widget.title,
 											description: widget.description,
 											points: widget.points,
-											lessonId: state.lessonId
+											lessonId: this.state.lessonId
 										})
 							}
 							else if (widget.widgetType === 'Exam') {

@@ -15,7 +15,8 @@ import WidgetList from "./components/WidgetList"
 import QuestionList from "./components/QuestionList"
 import MultipleChoiceQuestionEditor from "./elements/editors/MultipleChoiceQuestionEditor"
 import EssayQuestionEditor from "./elements/editors/EssayQuestionEditor"
-import FillInTheBlankQuestionEditor from "./elements/editors/FillInTheBlankQuestionEditor";
+import FillInTheBlankQuestionEditor from "./elements/editors/FillInTheBlankQuestionEditor"
+import AssignmentWidget from "./components/AssignmentWidget"
 
 
 class Home extends React.Component {
@@ -64,7 +65,8 @@ const App = createStackNavigator({
 	MultipleChoiceQuestionEditor,
 	EssayQuestionEditor,
 	FillInTheBlankQuestionEditor,
-	ExamWidget
+	ExamWidget,
+	AssignmentWidget
 })
 
 export default App
