@@ -26,38 +26,54 @@ class WidgetList extends Component {
 				})
 				.then(widgets => {
 					this.setState({widgets})
-					console.log(widgets)
 				})
 		})
-
-		console.log('widgets: ' + this.state.widgets)
 	}
 
 	render() {
 		return(
 			<ScrollView style={{padding: 15}}>
 				{this.state.widgets.map((widget, index) => (
-						<ListItem
-							onPress={() => this.props.navigation
-								.navigate("QuestionList", {
-									examId: widget.id,
-									name: widget.name,
-									description: widget.description,
-									lessonId: this.state.lessonId})}
-							key={index}
-							subtitle={widget.description}
-							title={widget.title}/>))}
+					<ListItem
+						onPress={() => {
+							if (widget.type === 'Assignment') {
+								this.props.navigation
+									.navigate('AssignmentEditor',
+										{
+											assignmentId: widget.id,
+											name: widget.name,
+											description: widget.description,
+											points: widget.points,
+											lessonId: state.lessonId
+										})
+							}
+							else if (widget.widgetType === 'Exam') {
+								this.props.navigation
+									.navigate('QuestionList',
+										{
+											examId: widget.id,
+											points: widget.points,
+											title: widget.name,
+											description: widget.description,
+											lessonId: this.state.lessonId
+										}
+									)
+								}
+							}
+						}
+						key={index}
+						subtitle={widget.description}
+						title={widget.title}/>))}
 
 				<Button title="Create Assignment"
-				        onPress={() => this.props.navigation
-					        .navigate('AssignmentWidget', {
-						        lessonId: state.lessonId
-					        })}/>
-				<Button title="Create Exam"
-				        onPress={() => this.props.navigation
-					        .navigate('Exam', {
+				        onPress={() => this.props.navigation.navigate('AssignmentWidget', {
 						        lessonId: this.state.lessonId
 					        })}/>
+
+				<Button title="Create Exam"
+				        onPress={() => this.props.navigation.navigate('ExamWidget', {
+							        lessonId: this.state.lessonId
+						        })}/>
 			</ScrollView>
 		)
 	}

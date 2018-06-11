@@ -22,15 +22,17 @@ class QuestionList extends Component {
 	componentDidMount() {
 		const {navigation} = this.props
 		const examId = navigation.getParam("examId")
-		const title = this.props.navigation.getParam("name")
+		const title = this.props.navigation.getParam("title")
 		const description = this.props.navigation.getParam("description")
 		const lessonId = this.props.navigation.getParam("lessonId")
+		const points = this.props.navigation.getParam("points")
 
 		this.setState({
 			examId: examId,
 			title: title,
 			description: description,
-			lessonId: lessonId
+			lessonId: lessonId,
+			points: points.toString()
 		})
 
 		// this.examService.findAllQuestionsForExam(examId)
@@ -43,8 +45,6 @@ class QuestionList extends Component {
 
 	createQuestion() {
 		let examId = this.state.examId
-
-		console.log('state examId: ' + examId)
 
 		if (this.state.questionType === "MC") {
 			this.props.navigation.navigate('MultipleChoiceQuestionEditor', {examId: examId})

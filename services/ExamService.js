@@ -17,6 +17,8 @@ class ExamService {
 	createExam(exam, lessonId) {
 		let url = localURL + "/api/lesson/" + lessonId + "/exam"
 
+		console.log('exam to be created: ' + exam)
+
 		return fetch(url, {
 			body: JSON.stringify(exam),
 			headers: {
